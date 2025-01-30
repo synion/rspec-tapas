@@ -19,6 +19,10 @@ describe 'have_table_row matcher' do
         expect(page).to have_table_row(0 => 'John', 1 => 27)
         expect(page).to have_table_row('John', 27)
         expect(page).to have_table_row(have_content('oh'), 27)
+
+        expect do
+          expect(page).not_to have_table_row('Name' => 'John', 'Age' => 27)
+        end.to fail_with('Expected not to find table row {"Name"=>"John", "Age"=>27} but found')
       end
     end
 

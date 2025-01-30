@@ -25,6 +25,10 @@ module RSpecTapas
         @failure_message
       end
 
+      failure_message_when_negated do |_actual|
+        "Expected not to find table row #{expected} but found"
+      end
+
       private
 
       def with_delay
